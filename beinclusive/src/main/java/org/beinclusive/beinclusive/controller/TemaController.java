@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.beinclusive.beinclusive.model.Tema;
 import org.beinclusive.beinclusive.repository.TemaRepository;
+import org.beinclusive.beinclusive.utils.EnumAvaliacao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +36,7 @@ public class TemaController {
 				.orElse(ResponseEntity.notFound().build());	 
 	}
 	@GetMapping("/tema/{avaliacao}")
-	public ResponseEntity<List<Tema>> getByAvaliacao(@PathVariable String avaliacao){
+	public ResponseEntity<List<Tema>> getByAvaliacao(@PathVariable EnumAvaliacao avaliacao){
 		return ResponseEntity.ok(repository.findAllByAvaliacao(avaliacao));
 	}
 	@PostMapping
