@@ -6,8 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TemaRepository extends JpaRepository<Tema, Long> {
 	
-	public List<Tema> findAllByAcessoAzulContainingIgnoreCase(String acessoAzul);
-	public List<Tema> findAllByAcessoVerdeContainingIgnoreCase(String acessoVerde);
-	public List<Tema> findAllByAcessoAmareloContainingIgnoreCase(String acessoAmarelo);
+	public List<Tema> findAllByAvaliacao(String avaliacao);
 
 }

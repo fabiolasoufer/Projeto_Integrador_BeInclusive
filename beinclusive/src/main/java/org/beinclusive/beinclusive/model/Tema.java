@@ -1,28 +1,26 @@
 package org.beinclusive.beinclusive.model;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.beinclusive.beinclusive.utils.EnumAvaliacao;
+
 @Entity
 @Table(name = "tb_tema")
 public class Tema {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
-	@NotNull
-	private boolean acessoAzul;
-	
-	@NotNull
-	private boolean acessoVerde;
-	
-	@NotNull
-	private boolean acessoAmarelo;
+
+	@Enumerated(EnumType.STRING)
+	private EnumAvaliacao avaliacao;
 
 	public long getId() {
 		return id;
@@ -32,28 +30,12 @@ public class Tema {
 		this.id = id;
 	}
 
-	public boolean isAcessoAzul() {
-		return acessoAzul;
+	public EnumAvaliacao getAvaliacao() {
+		return avaliacao;
 	}
 
-	public void setAcessoAzul(boolean acessoAzul) {
-		this.acessoAzul = acessoAzul;
-	}
-
-	public boolean isAcessoVerde() {
-		return acessoVerde;
-	}
-
-	public void setAcessoVerde(boolean acessoVerde) {
-		this.acessoVerde = acessoVerde;
-	}
-
-	public boolean isAcessoAmarelo() {
-		return acessoAmarelo;
-	}
-
-	public void setAcessoAmarelo(boolean acessoAmarelo) {
-		this.acessoAmarelo = acessoAmarelo;
+	public void setAvaliacao(EnumAvaliacao avaliacao) {
+		this.avaliacao = avaliacao;
 	}
 
 }
