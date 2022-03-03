@@ -1,16 +1,22 @@
 package org.beinclusive.beinclusive.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.beinclusive.beinclusive.utils.EnumAvaliacao;
 import org.beinclusive.beinclusive.utils.EnumCategoria;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "tb_usuario")
@@ -35,6 +41,10 @@ public class Usuario{
 	
 	@Enumerated(EnumType.STRING)
 	private EnumAvaliacao avaliacao;
+	
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties("usuario")
+	private List<PostagemModel> postagem;
 
 
 	public long getId() {
@@ -96,7 +106,14 @@ public class Usuario{
 		this.avaliacao = avaliacao;
 	}
 	
-	
+	public List<PostagemModel> getPostagem() {
+		return postagem;
+	}
+
+
+	public void setPostagem(List<PostagemModel> postagem) {
+		this.postagem = postagem;
+	}
 
 	
 
