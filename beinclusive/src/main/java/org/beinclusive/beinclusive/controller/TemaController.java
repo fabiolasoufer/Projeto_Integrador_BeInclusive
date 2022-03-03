@@ -27,9 +27,9 @@ public class TemaController {
 	private TemaRepository repository;
 	
 	@GetMapping
-   public ResponseEntity<List<Tema>> getAll(){
-	   return ResponseEntity.ok(repository.findAll());	   
-   }
+    public ResponseEntity<List<Tema>> getAll(){
+	    return ResponseEntity.ok(repository.findAll());	   
+    }
 	@GetMapping ("/{id}")
 	public ResponseEntity<Tema> GetById(@PathVariable(value = "id") long id) {
 		return repository.findById(id).map(resp -> ResponseEntity.ok(resp))
