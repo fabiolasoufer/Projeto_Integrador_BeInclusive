@@ -33,7 +33,7 @@ public class PostagemModel {
 	private Date date = new java.sql.Date(System.currentTimeMillis());
 	
 	@ManyToOne
-	@JsonIgnoreProperties("postagens")
+	@JsonIgnoreProperties("postagem")
 	private Tema tema;	
 	
 	@ManyToOne
