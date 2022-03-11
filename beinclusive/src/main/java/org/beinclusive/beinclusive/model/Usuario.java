@@ -11,12 +11,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
 import org.beinclusive.beinclusive.utils.EnumAvaliacao;
 import org.beinclusive.beinclusive.utils.EnumCategoria;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 
 @Entity
 @Table(name = "tb_usuario")
@@ -26,6 +29,8 @@ public class Usuario{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
+	@Schema
+	@Email
 	@NotNull
 	private String email;
 	

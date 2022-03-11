@@ -2,6 +2,8 @@ package org.beinclusive.beinclusive.controller;
 
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.beinclusive.beinclusive.model.Usuario;
 import org.beinclusive.beinclusive.model.UsuarioLogin;
 import org.beinclusive.beinclusive.service.UsuarioService;
@@ -24,15 +26,15 @@ public class UsuarioController {
 	private UsuarioService usuarioService;
 	
 	@PostMapping("/logar")
-	public ResponseEntity<UsuarioLogin> Autentication (@RequestBody Optional<UsuarioLogin>user){
+	public ResponseEntity<UsuarioLogin> Autentication (@Valid @RequestBody Optional<UsuarioLogin>user){
 		return usuarioService.Logar(user).map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
 	}
 
 	@PostMapping("/cadastrar")
-	public ResponseEntity<Usuario> Post(@RequestBody Usuario usuario){
+	public ResponseEntity<Optional<Usuario>> Post(@Valid @RequestBody Usuario usuario){
 		return ResponseEntity.status(HttpStatus.CREATED)
-				.body(usuarioService.CadastraUsuario(usuario));
+				.body(usuarioService.cadastrarUsuario(usuario));
 	}
 	
 	
