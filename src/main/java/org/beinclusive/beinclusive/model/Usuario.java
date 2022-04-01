@@ -54,6 +54,7 @@ public class Usuario {
 	@JsonIgnoreProperties("usuario")
 	private List<PostagemModel> postagem;
 
+
 	public long getId() {
 		return id;
 	}
